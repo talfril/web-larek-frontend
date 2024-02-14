@@ -1,3 +1,5 @@
+import { page } from '../../utils/constants';
+
 export class Modal {
 	modal: HTMLElement;
 	closeButton: HTMLButtonElement;
@@ -16,6 +18,7 @@ export class Modal {
 	openModal() {
 		if (this.modalContainer) {
 			this.modalContainer.classList.add('modal_active');
+			page.classList.add('page__wrapper_locked');
 			this.modalContainer.addEventListener('click', this.handleOverlayClick);
 		}
 
@@ -25,6 +28,7 @@ export class Modal {
 	closeModal(): void {
 		if (this.modalContainer) {
 			this.modalContainer.classList.remove('modal_active');
+			page.classList.remove('page__wrapper_locked');
 			this.modalContainer.removeEventListener('click', this.handleOverlayClick);
 			this.closeButton.removeEventListener('click', this.closeModal.bind(this));
 		}

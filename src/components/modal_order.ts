@@ -64,14 +64,7 @@ export class ModalOrder extends Modal {
 						this.onlineButton?.classList.contains('button_alt-active') ||
 						this.receiptButton?.classList.contains('button_alt-active');
 					const isAddressEntered = this.addressInput.value.length > 0;
-					if (isButtonSelected && isAddressEntered) {
-						if (this.button.hasAttribute('disabled')) {
-							this.button.removeAttribute('disabled');
-						}
-					}
-					if (!(isButtonSelected && isAddressEntered)) {
-						this.button.setAttribute('disabled', 'true');
-					}
+					this.buttonToggle(isButtonSelected, isAddressEntered);
 				});
 			}
 		}
@@ -88,14 +81,18 @@ export class ModalOrder extends Modal {
 				const isEmailEntered = this.emailInput?.value.length > 0;
 				const isPhoneEntered = this.phoneInput?.value.length > 0;
 
-				if (isEmailEntered && isPhoneEntered) {
-					if (this.button.hasAttribute('disabled')) {
-						this.button.removeAttribute('disabled');
-					}
-				} else {
-					this.button.setAttribute('disabled', 'true');
-				}
+				this.buttonToggle(isEmailEntered, isPhoneEntered);
 			};
+		}
+	}
+
+	buttonToggle(firstArg: boolean, secondArg: boolean) {
+		if (firstArg && secondArg) {
+			if (this.button.hasAttribute('disabled')) {
+				this.button.removeAttribute('disabled');
+			}
+		} else {
+			this.button.setAttribute('disabled', 'true');
 		}
 	}
 

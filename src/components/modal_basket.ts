@@ -2,6 +2,7 @@ import { Modal } from './base/modal';
 import { Basket, BasketItem } from './basket';
 import { EventEmitter } from './base/events';
 import { basketButton } from '../utils/constants';
+import { ensureElement } from '../utils/utils';
 
 export class ModalBasket extends Modal {
 	basket: Basket;
@@ -18,7 +19,7 @@ export class ModalBasket extends Modal {
 		});
 
 		this.button.addEventListener('click', () => {
-			this.eventEmitter.emit('modal_basket:click_on_order_button');
+			this.eventEmitter.emit('modal_basket:on_order');
 			this.closeModal();
 		});
 	}
@@ -83,7 +84,7 @@ export class ModalBasket extends Modal {
 	}
 
 	updateBasketCounter() {
-		const basketCounter = document.querySelector('.header__basket-counter');
+		const basketCounter = ensureElement('.header__basket-counter');
 		const countIn = this.basket.productsInBasket.length;
 		basketCounter.textContent = countIn.toString();
 	}

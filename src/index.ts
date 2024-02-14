@@ -49,7 +49,7 @@ const OrderSecond = new ModalOrder('order_finish', eventEmitter);
 const SuccessLarek = new ModalSuccess(LarekBasket, eventEmitter);
 
 //Установление обработчиков событий
-eventEmitter.on('catalog:card_clicked', (data: { product: Product }) => {
+eventEmitter.on('catalog:on_card', (data: { product: Product }) => {
 	const modalFullCard = new ModalFullCard(
 		data.product,
 		eventEmitter,
@@ -58,7 +58,7 @@ eventEmitter.on('catalog:card_clicked', (data: { product: Product }) => {
 	modalFullCard.openModal();
 });
 
-eventEmitter.on('modal_basket:click_on_order_button', () => {
+eventEmitter.on('modal_basket:on_order', () => {
 	OrderFirst.openModal();
 });
 
