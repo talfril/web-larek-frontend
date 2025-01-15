@@ -2,6 +2,8 @@
 
 Стек: HTML, SCSS, TS, Webpack
 
+Демонстрационная версия: https://talfril.github.io/web-larek-frontend/
+
 Структура проекта:
 - src/ — исходные файлы проекта
 - src/components/ — папка с JS компонентами
